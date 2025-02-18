@@ -1,0 +1,20 @@
+# Reproducibility
+seed: 42
+
+ckpt:
+  propagate: null
+  correct: null
+
+data:
+  data_path: null
+  index_file: test_800K.csv
+
+inference:
+  temp: 800
+  steps: 25
+  flow_steps: 10
+  solver: euler
+  num_retries: 0
+
+result:
+  output_csv: result.csv

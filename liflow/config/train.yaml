@@ -1,0 +1,89 @@
+# General
+task: null
+name: null
+seed: 42
+
+# Model
+model:
+  num_features: 64
+  num_radial_basis: 20
+  num_layers: 3
+  num_elements: 77
+  r_max: 5.0
+  r_offset: 0.5
+  ref_temp: 1000.0
+  pretrained_ckpt: null
+  prediction_mode: velocity  # velocity or data
+
+optimizer:
+  class_name: Adam
+  lr: 3e-4
+
+valid:
+  num_time_steps: 11
+
+# Prior and noise
+propagate_prior:
+  class_name: AdaptiveMaxwellBoltzmannPrior
+  params:
+    scale: [[1.0, 10.0], [0.316, 3.16]]
+
+correct_prior:
+  class_name: MaxwellBoltzmannPrior
+  params:
+    scale: 0.1
+
+correct_noise:
+  class_name: UniformScaleNormalPrior
+  params:
+    scale: 0.25
+
+# Data
+data:
+  data_path: null
+  index_files: [train_800K.csv]
+  time_delay_steps: 100
+  cutoff: 5.0
+  pbc: True
+  batch_size: 16
+  num_train_samples: 4000
+  num_valid_samples: 400
+  train_valid_split: True
+  sample_weight_comp: False
+  num_workers: 32
+  in_memory: False
+
+# Trainer
+trainer:
+  max_epochs: 500
+  log_every_n_steps: 1
+  check_val_every_n_epoch: 5
+  gradient_clip_val: 10.0
+  callbacks:
+    - class_name: EarlyStopping
+      params:
+        monitor: valid/loss
+        mode: min
+        patience: 10
+    # - class_name: EMA
+    #   params:
+    #     decay: 0.999
+    #     apply_ema_every_n_steps: 1
+    #     evaluate_ema_weights_instead: True
+    - class_name: ModelCheckpoint  # EMAModelCheckpoint if EMA is used
+      params:
+        dirpath: ckpt
+        filename: ${name}
+        monitor: valid/loss
+        mode: min
+        save_top_k: 1
+        save_last: null
+        verbose: True
+
+logger:
+  debug: False  # disable wandb if True
+  csv: True
+  wandb:
+    project: liflow
+    name: ${name}
+    offline: False

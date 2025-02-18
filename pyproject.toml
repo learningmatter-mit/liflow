@@ -1,0 +1,45 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "liflow"
+authors = [
+    { name = "Juno Nam", email = "junonam@mit.edu" },
+]
+description = "Flow matching for atomic transport"
+readme = "README.md"
+requires-python = ">=3.10"
+version = "0.1.0"
+dependencies = [
+    "torch",
+    "torch_geometric",
+    "torch-scatter",
+    "e3nn",
+    "mace-torch",
+    "ase",
+    "pymatgen",
+    "numpy",
+    "scipy",
+    "scikit-learn",
+    "pandas",
+    "matplotlib",
+    "seaborn",
+    "mdtraj",
+    "ipykernel",
+    "lightning",
+    "hydra-core",
+    "vesin",
+]
+
+[project.optional-dependencies]
+dev = [
+    "wandb",
+    "pre-commit",
+]
+
+[tool.setuptools]
+packages = ["liflow"]
+
+[tool.ruff]
+extend-include = ["*.ipynb"]
