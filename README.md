@@ -1,5 +1,9 @@
 # LiFlow
 
+[![arXiv](https://img.shields.io/badge/arXiv-2410.01464-84cc16)](https://arxiv.org/abs/2410.01464)
+[![Zenodo](https://img.shields.io/badge/DOI-10.5281/zenodo.14889760-14b8a6.svg)](https://zenodo.org/doi/10.5281/zenodo.14889760)
+[![License](https://img.shields.io/badge/License-MIT-3b82f6.svg)](https://opensource.org/license/mit)
+
 This repository implements a generative framework to accelerate molecular dynamics simulations for crystalline materials.
 We enable the propagation of atomic configurations in time by learning a distribution of displacements from a set of reference trajectories.
 The details of the method are described in the paper: [Flow Matching for Accelerated Simulation of Atomic Transport in Materials](https://arxiv.org/abs/2410.01464).
