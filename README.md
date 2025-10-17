@@ -6,7 +6,7 @@
 
 This repository implements a generative framework to accelerate molecular dynamics simulations for crystalline materials.
 We enable the propagation of atomic configurations in time by learning a distribution of displacements from a set of reference trajectories.
-The details of the method are described in the paper: [Flow Matching for Accelerated Simulation of Atomic Transport in Materials](https://arxiv.org/abs/2410.01464).
+The details of the method are described in the paper: [Flow Matching for Accelerated Simulation of Atomic Transport in Crystalline Materials](https://www.nature.com/articles/s42256-025-01125-4).
 
 <p align="center">
 <img src="figs/LGPS.gif" alt="LGPS traj" style="width: 70%;">
@@ -117,13 +117,11 @@ The script will read the checkpoint file and initial structure from the dataset 
 ## Citation
 
 ```bibtex
-@misc{nam2024flow,
-      title={Flow Matching for Accelerated Simulation of Atomic Transport in Materials},
-      author={Juno Nam and Sulin Liu and Gavin Winter and KyuJung Jun and Soojung Yang and Rafael G{\'o}mez-Bombarelli},
-      year={2024},
-      eprint={2410.01464},
-      archivePrefix={arXiv},
-      primaryClass={cond-mat.mtrl-sci},
-      url={https://arxiv.org/abs/2410.01464},
+@article{nam2025flow,
+  title={Flow Matching for Accelerated Simulation of Atomic Transport in Crystalline Materials},
+  author={Juno Nam and Sulin Liu and Gavin Winter and KyuJung Jun and Soojung Yang and Rafael G{\'o}mez-Bombarelli},
+  journal={Nature Machine Intelligence},
+  year={2025},
+  doi={10.1038/s42256-025-01125-4},
 }
 ```
